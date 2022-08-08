@@ -1,0 +1,10 @@
+<div>
+  <p><%= @article.title %></p>
+  <% @article.article_content.each do |article_content| %>
+    <p><%= article_content.content %></p>
+  <% end %>
+  <%= form_with model:[@article, @article_content], local: true do |f| %>
+    <%= f.text_field :content %>
+    <%= f.submit '決定' %>
+  <% end %>
+</div>

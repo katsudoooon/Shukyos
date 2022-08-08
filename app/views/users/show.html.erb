@@ -1,0 +1,6 @@
+<h1>ユーザーページ</h1>
+<p>ユーザー名：<%= @user.name %></p>
+<% @articles.each do |article| %>
+    <p>タイトル：
+    <%= link_to <%= article.title %></p>
+<% end %>

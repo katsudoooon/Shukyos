@@ -10,10 +10,17 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    article_comment = ArticleComment.find(params[:article_comment_id])
+    article = current_user.articles.new(article_params)
+    article.article_comment_id = article_comment.id
+    article.save
+    redirect_to article_path
 
   end
 
   def show
+    @article = Article.find(params[:id])
+
 
   end
 
@@ -28,5 +35,12 @@ class ArticlesController < ApplicationController
   def destroy
 
   end
+
+  private
+
+  def article_params
+    params.require(:article).permit(:title)
+  end
+
 
 end
